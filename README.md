@@ -185,8 +185,34 @@ Visit `http://<board-ip-address>:8080/` from a browser on the same network to vi
 | Stream is blank or green | Sensor not initialized | Call `camera.deinit()` before `camera.init()` and double-check pin mapping if using a custom board. |
 | Browser does not show video | Network isolation or firewall | Ensure the viewing device is on the same subnet and that port 8080 is open. |
 
+## Raspberry Pi CCTV Hub
+
+For a complete multi-camera surveillance system, check out the **[Raspberry Pi 5 CCTV Hub](./raspberry-pi-hub/)** included in this repository.
+
+The CCTV hub aggregates multiple ESP32-S3 camera streams into a unified dashboard with features including:
+
+- **Multi-camera live dashboard** - View all cameras in one place
+- **Motion detection monitoring** - Real-time alerts and recording
+- **Automatic recording** - Snapshots and video on motion events
+- **Health monitoring** - Track camera status and uptime
+- **RESTful API** - JSON API for integrations
+- **System service** - Auto-start on boot with systemd
+
+### Quick Start with CCTV Hub
+
+```bash
+cd raspberry-pi-hub
+./setup.sh
+nano config.json  # Configure your camera IPs
+source venv/bin/activate
+python3 cctv_hub.py
+```
+
+See the [raspberry-pi-hub/README.md](./raspberry-pi-hub/README.md) for complete documentation.
+
 ## Next Steps
 
-* Add authentication and TLS (e.g., by proxying through Nginx or ESP32 SSL sockets).
-* Capture still images on demand by exposing additional HTTP endpoints.
-* Integrate with Home Assistant by wrapping the MJPEG stream in a camera entity.
+* Set up the Raspberry Pi CCTV Hub for multi-camera aggregation (see above)
+* Add authentication and TLS (e.g., by proxying through Nginx or ESP32 SSL sockets)
+* Capture still images on demand by exposing additional HTTP endpoints
+* Integrate with Home Assistant by wrapping the MJPEG stream in a camera entity

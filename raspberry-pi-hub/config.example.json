@@ -1,0 +1,61 @@
+{
+  "cameras": [
+    {
+      "name": "FrontDoor",
+      "ip": "192.168.1.101",
+      "enabled": true,
+      "description": "Front entrance camera"
+    },
+    {
+      "name": "Garage",
+      "ip": "192.168.1.102",
+      "enabled": true,
+      "description": "Garage area camera"
+    },
+    {
+      "name": "BackYard",
+      "ip": "192.168.1.103",
+      "enabled": true,
+      "description": "Back yard camera"
+    }
+  ],
+  "recording": {
+    "enabled": true,
+    "snapshot_on_motion": true,
+    "video_on_motion": false,
+    "video_duration": 30,
+    "recordings_dir": "recordings",
+    "max_storage_gb": 50,
+    "cleanup_days": 7
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "debug": false
+  },
+  "polling": {
+    "motion_interval": 1.5,
+    "health_check_interval": 10,
+    "timeout": 2
+  },
+  "stream": {
+    "width": 640,
+    "height": 480,
+    "quality": 85
+  },
+  "notifications": {
+    "enabled": false,
+    "email": {
+      "smtp_server": "smtp.gmail.com",
+      "smtp_port": 587,
+      "username": "your-email@gmail.com",
+      "password": "your-app-password",
+      "from_addr": "your-email@gmail.com",
+      "to_addr": "alert-email@gmail.com"
+    },
+    "webhook": {
+      "url": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+      "enabled": false
+    }
+  }
+}

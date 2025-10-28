@@ -1,0 +1,32 @@
+[Unit]
+Description=ESP32-S3 CCTV Hub
+After=network-online.target
+Wants=network-online.target
+Documentation=https://github.com/canstralian/ESP32-S3-MicroPython-Setup
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/cctv-hub
+Environment="PATH=/home/pi/cctv-hub/venv/bin"
+ExecStart=/home/pi/cctv-hub/venv/bin/python3 /home/pi/cctv-hub/cctv_hub.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/pi/cctv-hub/recordings /home/pi/cctv-hub/logs
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=cctv-hub
+
+[Install]
+WantedBy=multi-user.target

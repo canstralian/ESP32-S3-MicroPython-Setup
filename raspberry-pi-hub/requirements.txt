@@ -1,0 +1,18 @@
+# ESP32-S3 CCTV Hub Requirements
+# Python 3.9+
+
+# Web Framework
+flask>=3.0.0
+werkzeug>=3.0.0
+
+# Computer Vision & Image Processing
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# HTTP Requests
+requests>=2.31.0
+
+# Optional: Performance improvements
+# Uncomment if needed for better performance
+# gunicorn>=21.2.0  # Production WSGI server
+# gevent>=23.9.0    # Async workers for better streaming
