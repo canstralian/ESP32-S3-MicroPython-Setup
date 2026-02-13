@@ -1,23 +1,34 @@
 [tool.poetry]
-name = "python-template"
-version = "0.1.0"
-description = ""
+name = "esp32-s3-micropython-setup"
+version = "0.2.0"
+description = "ESP32-S3 camera streaming server with MicroPython"
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.10.0,<3.12"
+python = ">=3.10.0,<3.13"
 esptool = "4.7.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0"
 pytest-embedded-serial-esp = "1.10.2"
+ruff = ">=0.4"
+pre-commit = ">=3.0"
 
 [tool.pyright]
-# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 useLibraryCodeForTypes = true
-exclude = [".cache"]
+exclude = [".cache", "stubs"]
+extraPaths = ["stubs"]
 
 [tool.ruff]
-# https://beta.ruff.rs/docs/configuration/
-select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
-ignore = ['W291', 'W292', 'W293']
+exclude = ["stubs"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "ARG", "SIM"]
+ignore = ["W291", "W292", "W293"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
